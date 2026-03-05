@@ -66,8 +66,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          controller: _scrollController,
+        child: RefreshIndicator(
+          onRefresh: _controller.loadProducts,
+          child: CustomScrollView(
+            controller: _scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
@@ -75,11 +78,22 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Product Catalog',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Product Catalog',
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.palette_outlined),
+                          tooltip: 'Component Showcase',
+                          onPressed: () => Get.toNamed('/showcase'),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     AppSearchBar(
@@ -175,6 +189,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               );
             }),
           ],
+          ),
         ),
       ),
     );

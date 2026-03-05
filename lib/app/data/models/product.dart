@@ -7,29 +7,29 @@ part 'product.g.dart';
 @JsonSerializable()
 class Product {
   final int id;
-  final String title;
-  final String description;
+  final String? title;
+  final String? description;
   final double price;
   @JsonKey(name: 'discountPercentage')
   final double discountPercentage;
   final double rating;
   final int stock;
-  final String brand;
-  final String category;
+  final String? brand;
+  final String? category;
   final String? thumbnail;
   @JsonKey(name: 'images')
   final List<String>? images;
 
   const Product({
     required this.id,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
     required this.price,
     required this.discountPercentage,
     required this.rating,
     required this.stock,
-    required this.brand,
-    required this.category,
+    this.brand,
+    this.category,
     this.thumbnail,
     this.images,
   });
@@ -62,9 +62,17 @@ class Product {
     return url;
   }
 
+  /// Safe title display
+  String get displayTitle => title ?? 'Untitled';
+
+  /// Safe description display
+  String get displayDescription => description ?? '';
+
   /// Safe brand display
-  String get displayBrand => brand.isEmpty ? 'Unknown brand' : brand;
+  String get displayBrand =>
+      (brand == null || brand!.isEmpty) ? 'Unknown brand' : brand!;
 
   /// Safe category display
-  String get displayCategory => category.isEmpty ? 'Uncategorized' : category;
+  String get displayCategory =>
+      (category == null || category!.isEmpty) ? 'Uncategorized' : category!;
 }

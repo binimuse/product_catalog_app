@@ -58,7 +58,8 @@ class ProductsRepository {
       });
       var products = response.products;
       if (category != null && category.isNotEmpty) {
-        products = products.where((p) => p.category == category).toList();
+        products =
+            products.where((p) => (p.category ?? '') == category).toList();
       }
       return ProductsResponse(
         products: products,

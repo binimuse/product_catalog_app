@@ -73,7 +73,7 @@ class _ProductDetailView extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      p.title,
+                      p.displayTitle,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -99,7 +99,7 @@ class _ProductDetailView extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      p.description,
+                      p.displayDescription,
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
