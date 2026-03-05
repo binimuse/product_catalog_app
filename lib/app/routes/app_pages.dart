@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import '../core/constants/breakpoints.dart';
 import '../features/products/screens/product_detail_screen.dart';
 import '../features/products/screens/product_list_screen.dart';
+import '../features/products/showcase/showcase_screen.dart';
 
 abstract class AppPages {
   AppPages._();
 
   static const products = '/products';
   static const productDetail = '/products/:id';
+  static const showcase = '/showcase';
 
   static final routes = [
     GetPage(
@@ -26,6 +28,10 @@ abstract class AppPages {
         }
         return ProductDetailScreen(productId: id);
       },
+    ),
+    GetPage(
+      name: showcase,
+      page: () => const ShowcaseScreen(),
     ),
   ];
 }
