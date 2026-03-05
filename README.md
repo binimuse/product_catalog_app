@@ -81,6 +81,13 @@ lib/
 - **ProductCard**: Compact list layout with thumbnail, price, rating
 - **Placeholders**: Shimmer for loading; generic icon for missing images
 
+## Enhancements
+
+- **Component Showcase** (Enhancement A): Tap the palette icon in the product list header to open `/showcase` — displays all design system components with light/dark theme toggle
+- **Pull-to-refresh** on product list
+- **Unit tests**: Product model (parsing, validation)
+- **Widget tests**: CategoryChip, ErrorState
+
 ## Limitations
 
 - **Navigation**: Uses GetX routing instead of GoRouter (per team preference)
